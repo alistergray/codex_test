@@ -2,61 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pension Contribution Planner</title>
+  <title>Pension Planner Demo</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 2rem; }
-    label { display: block; margin-top: 0.5rem; }
-    input { padding: 0.3rem; margin-top: 0.2rem; width: 100%; }
-    button { padding: 0.5rem 1rem; margin-top: 1rem; }
-    .result { margin-top: 1rem; font-weight: bold; }
-    .disclaimer { margin-top: 2rem; font-size: 0.9rem; color: #555; }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 1rem; }
   </style>
 </head>
 <body>
-  <h1>Pension Contribution Planner</h1>
-  <p>This simple tool estimates how much you might consider adding to your pension each month.</p>
-  <form id="planner">
-    <label>Current Age:
-      <input type="number" id="age" min="18" max="100" required>
-    </label>
-    <label>Desired Retirement Age:
-      <input type="number" id="retireAge" min="18" max="100" required>
-    </label>
-    <label>Annual Income (USD):
-      <input type="number" id="income" min="0" required>
-    </label>
-    <label>Target Retirement Income (% of salary):
-      <input type="number" id="targetPercent" min="0" max="100" value="70" required>
-    </label>
-    <label>Existing Retirement Savings (USD):
-      <input type="number" id="savings" min="0" value="0" required>
-    </label>
-    <button type="submit">Calculate</button>
-  </form>
-  <div class="result" id="result"></div>
-  <p class="disclaimer">Disclaimer: This calculator is for educational purposes only and is not a substitute for professional financial advice.</p>
-  <p><a href="game.html">Play our dinosaur game!</a></p>
-  <script>
-    document.getElementById('planner').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const age = parseFloat(document.getElementById('age').value);
-      const retireAge = parseFloat(document.getElementById('retireAge').value);
-      const income = parseFloat(document.getElementById('income').value);
-      const targetPercent = parseFloat(document.getElementById('targetPercent').value);
-      const savings = parseFloat(document.getElementById('savings').value);
-      if (retireAge <= age) {
-        document.getElementById('result').textContent = 'Retirement age must be greater than current age.';
-        return;
-      }
-      const yearsUntilRetire = retireAge - age;
-      const targetAnnualIncome = income * (targetPercent / 100);
-      const requiredTotal = targetAnnualIncome * 20; // naive 20 years of retirement
-      const neededSavings = Math.max(requiredTotal - savings, 0);
-      const yearlyContribution = neededSavings / yearsUntilRetire;
-      const monthlyContribution = yearlyContribution / 12;
-      document.getElementById('result').textContent =
-        'Estimated monthly contribution: $' + monthlyContribution.toFixed(2);
-    });
-  </script>
+  <h1>Welcome</h1>
+  <p>Select an option below:</p>
+  <ul>
+    <li><a href="planner.html">Pension Contribution Planner</a></li>
+    <li><a href="game.html">Play the Dinosaur Game</a></li>
+  </ul>
 </body>
 </html>
