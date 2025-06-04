@@ -5,6 +5,7 @@ This repository contains a simple pension contribution planner that can be hoste
 ## Usage
 1. Enable GitHub Pages in your repository settings, selecting the main branch as the source.
 2. Navigate to `https://<your-username>.github.io/<repository>/` to use the planner.
+3. Visit `https://<your-username>.github.io/<repository>/game.html` to play the simple dinosaur catching game.
 
 ## Disclaimer
 This tool is for educational purposes only and does **not** constitute professional financial advice. Consult a certified financial planner for personalized recommendations.

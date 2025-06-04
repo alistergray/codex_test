@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Catch the Dinosaur</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; text-align: center; }
+    #game-area {
+      position: relative;
+      width: 400px;
+      height: 300px;
+      border: 2px solid #333;
+      margin: 0 auto;
+      user-select: none;
+      cursor: crosshair;
+    }
+    #dino {
+      position: absolute;
+      font-size: 2rem;
+      user-select: none;
+    }
+    #score {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Catch the Dinosaur!</h1>
+  <p>Move your mouse and try to catch the dinosaur. Each time you catch it, it moves to a new random spot.</p>
+  <div id="game-area">
+    <div id="dino">🦖</div>
+  </div>
+  <div id="score">Score: 0</div>
+  <script>
+    const gameArea = document.getElementById('game-area');
+    const dino = document.getElementById('dino');
+    const scoreDisplay = document.getElementById('score');
+    let score = 0;
+    function moveDino() {
+      const maxX = gameArea.clientWidth - dino.offsetWidth;
+      const maxY = gameArea.clientHeight - dino.offsetHeight;
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+      dino.style.left = x + 'px';
+      dino.style.top = y + 'px';
+    }
+    function checkCatch(e) {
+      const rect = dino.getBoundingClientRect();
+      if (
+        e.clientX >= rect.left && e.clientX <= rect.right &&
+        e.clientY >= rect.top && e.clientY <= rect.bottom
+      ) {
+        score += 1;
+        scoreDisplay.textContent = 'Score: ' + score;
+        moveDino();
+      }
+    }
+    moveDino();
+    gameArea.addEventListener('mousemove', checkCatch);
+  </script>
+</body>
+</html>
